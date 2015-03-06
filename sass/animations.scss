@@ -1,0 +1,104 @@
+@import "global-variables";
+/////////////////////////
+////// Animations //////
+///////////////////////
+
+////////////////////////////////////////////////
+////// Mixin for cross browser keyframes ////// http://sassmeister.com/gist/7507778
+//////////////////////////////////////////////
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        $browser: '-webkit-'; @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        $browser: '-moz-'; @content;
+    }
+    @-o-keyframes #{$animationName} {
+        $browser: '-o-'; @content;
+    }
+    @keyframes #{$animationName} {
+        $browser: ''; @content;
+    }
+} $browser: null;
+
+////// Example usage //////
+
+// @include keyframes('rotate') {
+//     0% { #{$browser}transform: rotate(0deg);}
+//     100% { #{$browser}transform: rotate(360deg);}
+// }
+
+////// For fade animations add class here //////
+.anim-fadeBounce, .anim-fadeScale, .anim-fadeRotate { opacity: 0; }
+
+////// Animate //////
+.animate {
+	@include animation-duration(0.6s);
+	@include animation-fill-mode(both);
+	
+	@for $i from 1 through 5 {
+		&.delay-#{$i} { @include animation-delay($i * 0.4s); }
+		&.duration-#{$i} { @include animation-duration($i * 0.4s); }
+	}
+
+	&.anim-fadeBounce {
+		@include animation-name(fadeBounce);
+	}
+	&.anim-fadeScale {
+		@include animation-name(fadeScale);
+	}
+	&.anim-rotate {
+		@include animation-name(rotate);
+		&.infinite { 
+			@include animation-iteration-count(infinite); 
+			@include animation-timing-function(linear);
+		}
+	}
+	&.anim-fadeRotate {
+		@include animation-name(fadeRotate);
+	}
+	&.anim-rotateXY {
+		@include animation-name(rotateXY);
+	}
+}
+
+@include keyframes('fadeBounce') {
+	0% { opacity: 0; }
+	50% {
+		opacity: 1;
+		#{$browser}transform: scale(1.1);
+	}
+	70% { #{$browser}transform: scale(1); }
+	80% { #{$browser}transform: scale(1.05); }
+	95% { #{$browser}transform: scale(1.025); }
+	100% { 
+		#{$browser}transform: scale(1);
+		opacity: 1; 
+	}
+}
+
+@include keyframes('fadeScale') {
+	0% { opacity: 0; }
+	75% {
+		opacity: 1;
+		#{$browser}transform: scale(1.1);
+	}
+	100% { #{$browser}transform: scale(1); opacity: 1; }
+}
+
+@include keyframes('rotate') {
+	0% { #{$browser}transform: rotate(0deg); }
+	100% { #{$browser}transform: rotate(360deg); }
+}
+
+@include keyframes('fadeRotate') {
+	0% { #{$browser}transform: rotate(0deg); }
+	100% { #{$browser}transform: rotate(360deg); opacity: 1; }
+}
+
+@include keyframes('rotateXY') {
+	0% { #{$browser}transform: rotateX(-15deg) rotateY(-15deg); }
+	66% { #{$browser}transform: rotateY(-315deg) rotateY(-315deg) }
+	100% { #{$browser}transform: rotateY(-15deg) rotateY(-15deg) }
+}

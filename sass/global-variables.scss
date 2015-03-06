@@ -1,0 +1,40 @@
+/*
+ * Global variables used for styles throughout the framework and for various calculations
+ */
+@import "compass/css3";
+/* Global styles */
+$bgColor: #fff;
+$containerPadding: 0 20px;
+$totalContainerPadding: 40px;
+$maxWidth: 1280px;
+
+$primaryColor: #000;
+$secondaryColor: #222;
+$tertiaryColor: #666;
+
+$baseFontSize : 62.5%;
+$contentFontSize: 1.6em;
+$fontSizePx: 16;
+
+//Variables for heading mixin
+$maxHeadSize: 35;
+$diff: 0.10;
+
+/* Default button styles */
+$background: #4c54f3;
+$textColor: #fff;
+/* Alt button styles */
+$altBackground: #bababa;
+$altTextColor: #fff;
+
+//Golden ratio used for working out optimal line-height and line-width throughout
+$ratio: 1.61803398875;
+
+/*Generic styles*/
+$errorColor: rgb(255, 0, 0);
+$successColor: rgb(19, 165, 33);
+$tooltipWidth: 280px;
+$tooltipBg: rgb(234, 234, 234);
+
+/*Layout */
+$colNumber: 12;

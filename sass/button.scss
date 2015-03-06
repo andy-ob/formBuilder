@@ -1,0 +1,34 @@
+@import "global-variables";
+
+@mixin button-mixin($buttonBackground, $buttonTextColor) {
+	background: $buttonBackground;
+	@include border-radius(5px);
+	color: $buttonTextColor;
+	display: inline-block;
+	//margin-bottom: 20px;
+	margin-bottom: 1.25em;
+	//padding: 10px 30px;
+	padding: 0.625em 1.875em;
+}
+.btn {
+	@include button-mixin($background, $textColor);
+	&:hover {
+
+	}
+	&:active {
+
+	}
+	&.alt {
+		@include button-mixin($altBackground, $altTextColor);
+		&:hover {
+
+		}
+		&:active {
+
+		}
+	}
+	&.small {
+		//padding: 5px 15px;
+		padding: 0.3125em 0.9375em;
+	}
+}

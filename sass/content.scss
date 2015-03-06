@@ -1,0 +1,134 @@
+@import "global-variables";
+//////////////////////
+////// General //////
+////////////////////
+body {
+    overflow-x: hidden;
+}
+.accordion {
+    > div {
+        display: none;
+    }
+    h6 {
+        cursor: pointer;
+    }
+}
+///////////////////
+////// Grid //////
+/////////////////
+.grid {
+    border: 1px dashed #ccc;
+    padding: 20px;
+    min-height: 300px;
+    .row {
+        margin-bottom: 20px;
+        position: relative;
+        .delete-row {
+            cursor: pointer;
+            position: absolute;
+            right: -15px;
+            color: red;
+            background: white;
+            border: 1px solid;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            top: -10px;
+        }
+    }
+    .col {
+        border: 1px solid #999;
+        padding: 20px;
+    }
+    .even-pad {
+        min-height: 40px;
+    }
+}
+.fields {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+        margin: 0;
+        * {
+            cursor: move;
+        }
+    }
+    input {
+        margin: 0;
+    }
+    div {
+        position: relative;
+        .temp-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+.layout-draggables {
+    .row {
+        cursor: move;
+        margin-bottom: 10px;
+    }
+    .col {
+        border: 1px dashed #ccc;
+        height: 30px;
+    }
+}
+label[contenteditable="true"] {
+    border: 1px solid blue;
+}
+///////////////////////////
+////// Context menu //////
+/////////////////////////
+.contextMenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    color: #333;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.4);
+    border: 1px solid #999;
+    * {
+        transition: color .4s, background .4s;
+    }
+    li {
+        min-width: 150px;
+        overflow: hidden;
+        white-space: nowrap;
+        background: white;
+        border-bottom: 1px solid #ecf0f1;
+        padding: 0;
+    }
+    a {
+        display: block;
+        padding: 12px 15px;
+        &:hover {
+            background: #ecf0f1;
+        }
+    }
+}
+/////////////////////////
+////// Input menu //////
+///////////////////////
+.menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    transform: translate3d(150%, 0, 0);
+    transition: transform .3s ease-in-out;
+    &.menu-open {
+        transform: translate3d(0, 0, 0);
+    }
+}
+.input-menu, .select-menu, .textarea-menu {
+	width: 100%;
+	height: 100%;
+    color: #333;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.4);
+    padding: 30px 15px;
+}

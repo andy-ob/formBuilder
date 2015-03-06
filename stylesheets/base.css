@@ -1,0 +1,38 @@
+/*
+ * Global variables used for styles throughout the framework and for various calculations
+ */
+/* Global styles */
+/* Default button styles */
+/* Alt button styles */
+/*Generic styles*/
+/*Layout */
+/* line 3, ../sass/base.scss */
+html {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 6, ../sass/base.scss */
+*, *:before, *:after {
+  -moz-box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+/* line 9, ../sass/base.scss */
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+/* line 14, ../sass/base.scss */
+body {
+  background: #fff;
+  color: #222;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.6em;
+  height: 100%;
+  line-height: 1.61803em;
+  -webkit-font-smoothing: antialised;
+}

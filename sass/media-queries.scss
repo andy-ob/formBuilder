@@ -1,0 +1,96 @@
+@import "global-variables";
+
+$breakpoints: (phone: 480px,
+				tablet: 768px,
+				tabletplus: 960px,
+				netbook: 1024px,
+				laptop: 1280px);
+$expressions: (all: "screen",
+				screen: "screen",
+				print: "print",
+				handheld: "handheld",
+				retina: ("(-webkit-min-device-pixel-ratio: 2)", "(min-resolution: 192dpi)"));
+
+@mixin breakbetween($expression, $breakpointmin, $breakpointmax) {
+	@if map-has-key($expressions, $expression) {
+		@if map-has-key($breakpoints, $breakpointmin) and map-has-key($breakpoints, $breakpointmax) {
+			@media #{$expression} and (min-width: #{map-get($breakpoints, $breakpointmin)}) and (max-width: #{map-get($breakpoints, $breakpointmax)}) {
+				@content;	
+			}
+		}
+	}
+}
+@mixin breakbelow($expression, $breakpointmax) {
+	@if map-has-key($expressions, $expression) {
+		@if map-has-key($breakpoints, $breakpointmax) {
+			@media #{$expression} and (max-width: #{map-get($breakpoints, $breakpointmax) - 1}) {
+				@content;	
+			}
+		}
+	}
+}
+@mixin breakabove($expression, $breakpointmin) {
+	@if map-has-key($expressions, $expression) {
+		@if map-has-key($expressions, $expression) {
+			@media #{$expression} and (min-width: #{map-get($breakpoints, $breakpointmin)}) {
+				@content;	
+			}
+		}
+	}
+}
+
+@include breakbetween(all, tabletplus, laptop) {
+	body {
+		display: block;
+	}
+}
+@include breakbelow(all, laptop) {
+	body {
+		display: block;
+	}
+}
+@include breakbetween(all, tablet, tabletplus) {
+	body {
+		display: block;
+	}
+}
+@include breakbelow(all, tabletplus) {
+	.contain {
+		padding: 0 10px;
+	}
+}
+@include breakbetween(all, phone, tablet) {
+	body {
+		display: block;
+	}
+}
+@include breakabove(all, tablet) {
+	.fadeIn, .fadeScale, .faderotate360 {
+		opacity: 0;	
+	}
+}
+@include breakbelow(all, tablet) {
+	.col {
+		float: none;
+		width: 100%;
+	}
+	div[class*="offby"] {
+		margin-left: 0;
+	}
+	.row {
+		&.negative-10, &.negative-20, &.negative-30 {
+			margin: 0;
+			.even-pad {
+				margin: 0;
+			}
+		}
+		.even-pad {
+			margin: 0;
+		}
+	}
+}
+@include breakbelow(all, phone) {
+	.contain {
+		padding: 0 5px;
+	}
+}

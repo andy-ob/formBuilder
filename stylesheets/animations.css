@@ -1,0 +1,374 @@
+/*
+ * Global variables used for styles throughout the framework and for various calculations
+ */
+/* Global styles */
+/* Default button styles */
+/* Alt button styles */
+/*Generic styles*/
+/*Layout */
+/* line 33, ../sass/animations.scss */
+.anim-fadeBounce, .anim-fadeScale, .anim-fadeRotate {
+  opacity: 0;
+}
+
+/* line 36, ../sass/animations.scss */
+.animate {
+  -moz-animation-duration: 0.6s;
+  -webkit-animation-duration: 0.6s;
+  animation-duration: 0.6s;
+  -moz-animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+/* line 41, ../sass/animations.scss */
+.animate.delay-1 {
+  -moz-animation-delay: 0.4s;
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+/* line 42, ../sass/animations.scss */
+.animate.duration-1 {
+  -moz-animation-duration: 0.4s;
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+}
+/* line 41, ../sass/animations.scss */
+.animate.delay-2 {
+  -moz-animation-delay: 0.8s;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+/* line 42, ../sass/animations.scss */
+.animate.duration-2 {
+  -moz-animation-duration: 0.8s;
+  -webkit-animation-duration: 0.8s;
+  animation-duration: 0.8s;
+}
+/* line 41, ../sass/animations.scss */
+.animate.delay-3 {
+  -moz-animation-delay: 1.2s;
+  -webkit-animation-delay: 1.2s;
+  animation-delay: 1.2s;
+}
+/* line 42, ../sass/animations.scss */
+.animate.duration-3 {
+  -moz-animation-duration: 1.2s;
+  -webkit-animation-duration: 1.2s;
+  animation-duration: 1.2s;
+}
+/* line 41, ../sass/animations.scss */
+.animate.delay-4 {
+  -moz-animation-delay: 1.6s;
+  -webkit-animation-delay: 1.6s;
+  animation-delay: 1.6s;
+}
+/* line 42, ../sass/animations.scss */
+.animate.duration-4 {
+  -moz-animation-duration: 1.6s;
+  -webkit-animation-duration: 1.6s;
+  animation-duration: 1.6s;
+}
+/* line 41, ../sass/animations.scss */
+.animate.delay-5 {
+  -moz-animation-delay: 2s;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+/* line 42, ../sass/animations.scss */
+.animate.duration-5 {
+  -moz-animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+/* line 45, ../sass/animations.scss */
+.animate.anim-fadeBounce {
+  -moz-animation-name: fadeBounce;
+  -webkit-animation-name: fadeBounce;
+  animation-name: fadeBounce;
+}
+/* line 48, ../sass/animations.scss */
+.animate.anim-fadeScale {
+  -moz-animation-name: fadeScale;
+  -webkit-animation-name: fadeScale;
+  animation-name: fadeScale;
+}
+/* line 51, ../sass/animations.scss */
+.animate.anim-rotate {
+  -moz-animation-name: rotate;
+  -webkit-animation-name: rotate;
+  animation-name: rotate;
+}
+/* line 53, ../sass/animations.scss */
+.animate.anim-rotate.infinite {
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+/* line 58, ../sass/animations.scss */
+.animate.anim-fadeRotate {
+  -moz-animation-name: fadeRotate;
+  -webkit-animation-name: fadeRotate;
+  animation-name: fadeRotate;
+}
+/* line 61, ../sass/animations.scss */
+.animate.anim-rotateXY {
+  -moz-animation-name: rotateXY;
+  -webkit-animation-name: rotateXY;
+  animation-name: rotateXY;
+}
+
+@-webkit-keyframes fadeBounce {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1.05);
+  }
+  95% {
+    transform: scale(1.025);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeBounce {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1.05);
+  }
+  95% {
+    transform: scale(1.025);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeBounce {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1.05);
+  }
+  95% {
+    transform: scale(1.025);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes fadeBounce {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1.05);
+  }
+  95% {
+    transform: scale(1.025);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeScale {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeScale {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeScale {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes fadeScale {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes fadeRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+@keyframes fadeRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes rotateXY {
+  0% {
+    transform: rotateX(-15deg) rotateY(-15deg);
+  }
+  66% {
+    transform: rotateY(-315deg) rotateY(-315deg);
+  }
+  100% {
+    transform: rotateY(-15deg) rotateY(-15deg);
+  }
+}
+@-moz-keyframes rotateXY {
+  0% {
+    transform: rotateX(-15deg) rotateY(-15deg);
+  }
+  66% {
+    transform: rotateY(-315deg) rotateY(-315deg);
+  }
+  100% {
+    transform: rotateY(-15deg) rotateY(-15deg);
+  }
+}
+@-o-keyframes rotateXY {
+  0% {
+    transform: rotateX(-15deg) rotateY(-15deg);
+  }
+  66% {
+    transform: rotateY(-315deg) rotateY(-315deg);
+  }
+  100% {
+    transform: rotateY(-15deg) rotateY(-15deg);
+  }
+}
+@keyframes rotateXY {
+  0% {
+    transform: rotateX(-15deg) rotateY(-15deg);
+  }
+  66% {
+    transform: rotateY(-315deg) rotateY(-315deg);
+  }
+  100% {
+    transform: rotateY(-15deg) rotateY(-15deg);
+  }
+}

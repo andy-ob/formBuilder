@@ -1,0 +1,50 @@
+@import "global-variables";
+
+img {
+	display: inline-block;
+	width: auto;
+}
+blockquote {
+	color: $tertiaryColor;
+	font-size: 1.25em;
+	font-style: italic;
+	//padding: 20px 10px;
+	padding: 1.25em 0.625em;
+}
+/**********/
+
+/* List elements */
+ul, ol {
+	//margin: 20px 0;
+	margin: 1.25em 0;
+	li {
+		//padding: 0 0 10px 0;
+		padding: 0 0 0.625em 0;
+	}
+	ul, ol {
+		margin-bottom: 0;
+	}	
+}
+ul {
+	//padding: 0 0 0 30px;
+	padding: 0 0 0 1.875em;
+}
+dl {
+	//margin: 20px 0;
+	margin: 1.25em 0;
+	dd, dt {
+		//padding: 0 0 10px 0;
+		padding: 0 0 0.625em 0;
+	}
+}
+hr {
+	border: 4px solid $tertiaryColor;
+	//margin:  40px 0 20px;
+	margin: 2.5em 0 1.25em;
+}
+fieldset {
+	border: 0;
+}
+legend {
+	display: none;
+}

@@ -1,0 +1,34 @@
+/*
+ * Global variables used for styles throughout the framework and for various calculations
+ */
+/* Global styles */
+/* Default button styles */
+/* Alt button styles */
+/*Generic styles*/
+/*Layout */
+/* line 13, ../sass/button.scss */
+.btn {
+  background: #4c54f3;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  color: #fff;
+  display: inline-block;
+  margin-bottom: 1.25em;
+  padding: 0.625em 1.875em;
+}
+/* line 21, ../sass/button.scss */
+.btn.alt {
+  background: #bababa;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  color: #fff;
+  display: inline-block;
+  margin-bottom: 1.25em;
+  padding: 0.625em 1.875em;
+}
+/* line 30, ../sass/button.scss */
+.btn.small {
+  padding: 0.3125em 0.9375em;
+}

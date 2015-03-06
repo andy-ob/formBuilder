@@ -1,0 +1,351 @@
+/*
+ * Global variables used for styles throughout the framework and for various calculations
+ */
+/* Global styles */
+/* Default button styles */
+/* Alt button styles */
+/*Generic styles*/
+/*Layout */
+/* line 2, ../sass/site.scss */
+body {
+  padding-left: 200px;
+}
+
+/*Navigation*/
+/* line 6, ../sass/site.scss */
+header {
+  bottom: 0;
+  -moz-box-shadow: 2px 0 1px -1px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 2px 0 1px -1px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 0 1px -1px rgba(0, 0, 0, 0.3);
+  left: 0;
+  padding: 25px 0;
+  position: fixed;
+  top: 0;
+  width: 200px;
+}
+/* line 14, ../sass/site.scss */
+header::before, header::after {
+  background: #666666;
+  content: "";
+  height: 4px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+/* line 23, ../sass/site.scss */
+header::after {
+  bottom: 0;
+  top: auto;
+}
+/* line 27, ../sass/site.scss */
+header .contain {
+  position: relative;
+}
+
+/* line 31, ../sass/site.scss */
+#leadNav {
+  clear: both;
+}
+/* line 33, ../sass/site.scss */
+#leadNav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 38, ../sass/site.scss */
+#leadNav li {
+  display: block;
+  padding-bottom: 0;
+}
+/* line 41, ../sass/site.scss */
+#leadNav li a {
+  display: block;
+  font-weight: 700;
+  padding: 15px;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+/* line 46, ../sass/site.scss */
+#leadNav li a:hover, #leadNav li a.active {
+  background: #eaeaea;
+  text-decoration: none;
+}
+
+/* line 53, ../sass/site.scss */
+#navSelect:target ul {
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  margin-left: 0;
+}
+/* line 56, ../sass/site.scss */
+#navSelect:target ul .menuToggle img {
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+/* line 60, ../sass/site.scss */
+#navSelect:target ul .close {
+  display: inline-block;
+  left: 0;
+  position: absolute;
+  text-indent: -9999px;
+  top: 0;
+  width: 41px;
+}
+
+/* line 71, ../sass/site.scss */
+.cubeContainer {
+  height: 50px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  -webkit-perspective: 250px;
+  width: 50px;
+}
+
+/* line 78, ../sass/site.scss */
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: all ease-in-out 0.2s;
+  -webkit-transition: all ease-in-out 0.2s;
+  -moz-transform: rotateX(-15deg) rotateY(-15deg);
+  -webkit-transform: rotateX(-15deg) rotateY(-15deg);
+}
+
+/* line 89, ../sass/site.scss */
+.cube > div {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+/* line 94, ../sass/site.scss */
+.front {
+  -moz-transform: rotateY(0deg) translateZ(25px);
+  -webkit-transform: rotateY(0deg) translateZ(25px);
+  border: 1px solid #000;
+  background: rgba(102, 102, 102, 0.8);
+}
+
+/* line 100, ../sass/site.scss */
+.back {
+  -moz-transform: rotateX(180deg) translateZ(25px);
+  -webkit-transform: rotateX(180deg) translateZ(25px);
+  border: 1px solid #000;
+  background: rgba(102, 102, 102, 0.8);
+}
+
+/* line 106, ../sass/site.scss */
+.right {
+  -moz-transform: rotateY(90deg) translateZ(25px);
+  -webkit-transform: rotateY(90deg) translateZ(25px);
+  border: 1px solid #000;
+  background: rgba(102, 102, 102, 0.8);
+}
+
+/* line 112, ../sass/site.scss */
+.left {
+  -moz-transform: rotateY(-90deg) translateZ(25px);
+  -webkit-transform: rotateY(-90deg) translateZ(25px);
+  border: 1px solid #000;
+  background: rgba(102, 102, 102, 0.8);
+}
+
+/* line 118, ../sass/site.scss */
+.top {
+  -moz-transform: rotateX(90deg) translateZ(25px);
+  -webkit-transform: rotateX(90deg) translateZ(25px);
+  border: 1px solid #000;
+  background: rgba(102, 102, 102, 0.8);
+}
+
+/* line 124, ../sass/site.scss */
+.bottom {
+  -moz-transform: rotateX(-90deg) translateZ(25px);
+  -webkit-transform: rotateX(-90deg) translateZ(25px);
+  border: 1px solid #000;
+  background: rgba(102, 102, 102, 0.8);
+}
+
+/* line 130, ../sass/site.scss */
+.peekLeft {
+  -moz-transform: rotateY(25deg);
+  -webkit-transform: rotateY(25deg);
+}
+
+/* line 134, ../sass/site.scss */
+.peekRight {
+  -moz-transform: rotateY(-25deg);
+  -webkit-transform: rotateY(-25deg);
+}
+
+/* line 138, ../sass/site.scss */
+.peekTop {
+  -moz-transform: rotateX(-25deg);
+  -webkit-transform: rotateX(-25deg);
+}
+
+/* line 142, ../sass/site.scss */
+.peekBottom {
+  -moz-transform: rotateX(25deg);
+  -webkit-transform: rotateX(25deg);
+}
+
+/* line 146, ../sass/site.scss */
+.top-show {
+  -moz-transform: rotateX(-90deg);
+  -webkit-transform: rotateX(-90deg);
+}
+
+/* line 147, ../sass/site.scss */
+.bottom-show {
+  -moz-transform: rotateX(90deg);
+  -webkit-transform: rotateX(90deg);
+}
+
+/* line 148, ../sass/site.scss */
+.front-show {
+  -moz-transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+}
+
+/* line 149, ../sass/site.scss */
+.back-show {
+  -moz-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+/* line 150, ../sass/site.scss */
+.left-show {
+  -moz-transform: rotateY(90deg);
+  -webkit-transform: rotateY(90deg);
+}
+
+/* line 151, ../sass/site.scss */
+.right-show {
+  -moz-transform: rotateY(-90deg);
+  -webkit-transform: rotateY(-90deg);
+}
+
+/* line 153, ../sass/site.scss */
+.table-display {
+  display: table;
+  border-spacing: 15px;
+}
+
+/* line 158, ../sass/site.scss */
+.example-anim-box {
+  width: 300px;
+  height: 150px;
+  background: #323a45;
+  color: white;
+  padding: 15px;
+  display: table-cell;
+  cursor: pointer;
+}
+/* line 167, ../sass/site.scss */
+.example-anim-box + div {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 25px;
+}
+/* line 172, ../sass/site.scss */
+.example-anim-box + div pre {
+  padding-right: 5px;
+}
+
+/* line 182, ../sass/site.scss */
+h2 + em {
+  color: #aed02e;
+}
+
+/* line 186, ../sass/site.scss */
+.col em {
+  background: rgba(225, 0, 0, 0.4);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* line 193, ../sass/site.scss */
+.show-color {
+  background: rgba(225, 0, 0, 0.4);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* line 199, ../sass/site.scss */
+#animations span {
+  display: inline-block;
+}
+
+/* line 204, ../sass/site.scss */
+.full img {
+  width: 100%;
+}
+
+/* line 208, ../sass/site.scss */
+hr {
+  margin: 50px 0;
+}
+
+@media all and (max-width: 720px) {
+  /* line 214, ../sass/site.scss */
+  .scrollMenu #navSelect {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiNlYWVhZWEiLz48c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+    background-size: 100%;
+    background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(50%, #eaeaea), color-stop(50%, #ffffff));
+    background-image: -moz-linear-gradient(left, #eaeaea 50%, #ffffff 50%);
+    background-image: -webkit-linear-gradient(left, #eaeaea 50%, #ffffff 50%);
+    background-image: linear-gradient(to right, #eaeaea 50%, #ffffff 50%);
+    height: auto;
+    z-index: 2;
+  }
+  /* line 219, ../sass/site.scss */
+  .scrollMenu nav ul li {
+    float: none;
+  }
+  /* line 222, ../sass/site.scss */
+  .scrollMenu ul {
+    height: 38px;
+    margin-left: 0;
+  }
+  /* line 225, ../sass/site.scss */
+  .scrollMenu ul .menuToggle {
+    position: relative;
+  }
+  /* line 228, ../sass/site.scss */
+  .scrollMenu ul a {
+    display: block;
+  }
+  /* line 232, ../sass/site.scss */
+  .scrollMenu .menuToggle + li {
+    margin-left: 0;
+  }
+  /* line 235, ../sass/site.scss */
+  .scrollMenu #navSelect:target {
+    background: #eaeaea;
+  }
+  /* line 237, ../sass/site.scss */
+  .scrollMenu #navSelect:target ul {
+    height: 292px;
+  }
+}

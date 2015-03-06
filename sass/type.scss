@@ -1,0 +1,32 @@
+@import "global-variables";
+
+@mixin headings($maxHeadSize, $diff) {
+	$decrement: $maxHeadSize * $diff;
+	@for $i from 1 to 7 {
+		$fSize: 1 / $fontSizePx * $maxHeadSize;
+		h#{$i} {
+			font-size: $fSize + em;
+		}
+		$maxHeadSize: $maxHeadSize - $decrement;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: $primaryColor;
+	font-weight: 700;
+	line-height: 1em;
+}
+@include headings($maxHeadSize, $diff);
+a {
+	text-decoration: none;
+	color: $tertiaryColor;
+	@include transition(all ease-in-out 0.2s);
+	&:hover, &:focus {
+		text-decoration: underline;
+	}
+}
+
+p {
+	//margin: 0 0 25px 0;
+	margin: 0 0 1.5625em 0;
+}

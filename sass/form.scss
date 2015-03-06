@@ -1,0 +1,35 @@
+@import "global-variables";
+
+input, label, textarea {
+	display: block;
+	width: 100%;
+}
+input, textarea, select {
+	border: 2px solid #ccc;
+	@include border-radius(5px);
+	//margin-bottom: 10px;
+	margin-bottom: 0.625em;
+	//padding: 10px;
+	padding: 0.625em;
+}
+input[type='checkbox'], input[type='radio'] {
+	width: auto;
+	display: inline-block;
+	// position: absolute;
+	// left: 0;
+	// top: 4px;
+	+ label {
+		//padding-left: 20px;
+		padding-left: 1.25em;
+	}
+}
+button {
+	border: none;
+	//margin-top: 20px;
+	margin-top: 0.625em;
+}
+.frmRow {
+	//margin-bottom: 10px;
+	margin-bottom: 0.625em;
+	position: relative;
+}
