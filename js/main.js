@@ -1,7 +1,7 @@
 $(function() {
 
     $('.accordion h6').on('click', function() {
-        $(this).next('div').slideToggle();
+        $(this).next('div').stop(true, true).slideToggle(true);
         $('.accordion h6').not(this).next('div').hide();
     });
 
@@ -51,7 +51,8 @@ $(function() {
 
     var input_menu = '<div class="input-menu"><div><label for="input-id">Input id</label><input type="text" id="input-id" /></div><div><label for="input-type">Input type</label><select name="Input type" id="input-type"><option value="text">text</option><option value="number">number</option><option value="email">email</option></select></div><div><label for="label-text">Label text</label><input type="text" id="label-text" /></div><div><label for="placeholder-text">Placeholder text</label><input type="text" id="placeholder-text" /></div><div class="required-checkbox"><label for="required">Required</label><input type="checkbox" id="required" /></div><div><label for="error-text">Error text</label><input type="text" id="error-text" disabled /></div><div><input type="submit" id="done" value="Done" /></div></div>',
         textarea_menu = '<div class="textarea-menu"><div><label for="input-id">Textarea id</label><input type="text" id="input-id" /></div><div><label for="label-text">Label text</label><input type="text" id="label-text" /></div><div><label for="placeholder-text">Placeholder text</label><input type="text" id="placeholder-text" /></div><div class="required-checkbox"><label for="required">Required</label><input type="checkbox" id="required" /></div><div><label for="error-text">Error text</label><input type="text" id="error-text" disabled /></div><div><input type="submit" id="done" value="Done" /></div></div>',
-        select_menu = '<div class="select-menu"><div><label for="select-id">Select id</label><input type="text" id="input-id" /></div><div><label for="label-text">Label text</label><input type="text" id="label-text" /></div><div><label for="options">Options</label><textarea rows="10" id="select-options"></textarea></div><div class="placeholder-checkbox"><label for="placeholder">Placeholder</label><input type="checkbox" id="placeholder" /></div><div class="required-checkbox"><label for="required">Required</label><input type="checkbox" id="required" /></div><div><label for="error-text">Error text</label><input type="text" id="error-text" disabled /></div><div><input type="submit" id="done" value="Done" /></div></div>',
+        select_menu = '<div class="select-menu"><div><label for="select-id">Select id</label><input type="text" id="input-id" /></div><div><label for="label-text">Label text</label><input type="text" id="label-text" /></div><div><label for="options">Options</label><textarea rows="10" id="select-options"></textarea></div><div class="placeholder-checkbox"><label for="placeholder">Placeholder (this will set the first option as an unselectable placeholder)</label><input type="checkbox" id="placeholder" /></div><div class="required-checkbox"><label for="required">Required</label><input type="checkbox" id="required" /></div><div><label for="error-text">Error text</label><input type="text" id="error-text" disabled /></div><div><input type="submit" id="done" value="Done" /></div></div>',
+        radio_menu = '<div class="radio-menu"> <div> <label for="group-name">Group name</label> <input type="text" id="group-name"/> </div><div> <label for="label-text">Label text</label> <input type="text" id="label-text"/> </div><div> <label for="radio-options">Options</label> <textarea rows="10" id="radio-options"></textarea> </div><div class="required-checkbox"> <label for="required">Required</label> <input type="checkbox" id="required"/> </div><div> <label for="error-text">Error text</label> <input type="text" id="error-text" disabled/> </div><div> <input type="submit" id="done" value="Done"/> </div></div>',
         inputThis,
         overlayWidth;
 
@@ -61,14 +62,14 @@ $(function() {
         $('.menu').css('width', overlayWidth);
     }).resize();
 
-    $(document).on('click', '.grid input, .grid textarea, .grid select', function(e) {
+    $(document).on('click', '.grid input[type=text], .grid textarea, .grid select, .grid .radio-group', function(e) {
         inputThis = $(this);
 
         if ($('.menu').hasClass('menu-open')) {
             $('.menu').empty();
         }
 
-        if (inputThis.is('input')) {
+        if (inputThis.is('input[type=text]')) {
             if ($('.input-menu').length < 1) {
                 $('.menu').append(input_menu);
             }
@@ -92,6 +93,14 @@ $(function() {
             populateMenu($('.select-menu'), select_menu);
         }
 
+        if (inputThis.is('.radio-group')) {
+            if ($('.radio-menu').length < 1) {
+                $('.menu').append(radio_menu);
+            }
+
+            populateMenu($('.radio-menu'), input_menu);
+        }
+
         e.stopPropagation();
     });
 
@@ -106,14 +115,20 @@ $(function() {
 
         ////// Check if validation message has been added already to stop duplication occuring //////
         if (inputThis.next('.error').length > 0) {
-            console.log(menuClass);
             menuClass.find('#required').prop('checked', true);
             menuClass.find('#error-text').prop('disabled', false);
         } else {
             menuClass.find('#required').prop('checked', false);
             menuClass.find('#error-text').prop('disabled', true);
         }
-        ////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ////// Check if select option :first already has disabled //////
+        if (inputThis.find('option').eq(0).is(':disabled')) {
+            menuClass.find('#placeholder').prop('checked', true);
+        }
+        ////////////////////////////////////////////////////////////////
 
 
         ////// Targegt specific input types //////
@@ -134,6 +149,22 @@ $(function() {
                 $('.select-menu #select-options').append(options[i]);
                 if (i < options.length - 1) {
                     $('.select-menu #select-options').append('\n');
+                }
+            });
+        }
+
+        if (inputThis.is('.radio-group')) {
+            $('#label-text').val(inputThis.find('.radio-group-label').text());
+
+            var options = [];
+            $('.radio-menu #radio-options').empty();
+            inputThis.find('label.radio').each(function(i){
+                options.push(this);
+            });
+            $.each(options, function(i, value){
+                $('.radio-menu #radio-options').append(options[i].innerText);
+                if (i < options.length - 1) {
+                    $('.radio-menu #radio-options').append('\n');
                 }
             });
         }
@@ -172,7 +203,22 @@ $(function() {
             inputThis.parent().find('.error').remove();
         }
     });
-
+    ////// Set placeholder for dropdown list //////
+    $(document).on('click', '#placeholder', function() {
+        if ($(this).is(':checked')) {
+            inputThis.find('option').eq(0).attr('disabled','disabled').attr('selected','selected');
+        } else {
+            inputThis.find('option').eq(0).removeAttr('disabled').removeAttr('selected');
+        }
+    });
+    ////// Set group name for radio buttons (id which will append to wrapping div ) //////
+    $(document).on('keyup', '#group-name', function() {
+        inputThis.attr('id', ($(this).val()));
+    });
+    ////// Set label for radio buttons group //////
+    $(document).on('keyup', '#label-text', function() {
+        inputThis.find('.radio-group-label').text($(this).val());
+    });
 
     ////// Text area for select options //////
     var options = [];
@@ -183,6 +229,17 @@ $(function() {
 
         for (var i = 0; i < items.length; i++) {
             inputThis.append($('<option>' + items[i] + '</option>').attr('value', i));
+        }
+    });
+
+    ////// Text area for radio options //////
+    $(document).on('keyup', '#radio-options', function() {
+        var items = $(this).val().split('\n');
+
+        inputThis.find('.radio').remove();
+
+        for (var i = 0; i < items.length; i++) {
+            inputThis.append($('<label class="radio" for="radio-' + (i+1) + '"><input type="radio" id="radio-' + (i+1) + '" name="radios" value="' + items[i] + '" />' + items[i] + '</label>'));
         }
     });
 
@@ -217,6 +274,13 @@ $(function() {
             isHovered = $(".textarea-menu").is(":hover");
             if (isHovered == false) {
                 setTimeout(function() { $(".textarea-menu").remove(); }, 300);
+                $('.menu').removeClass('menu-open');
+            }
+        }
+        if ($('.radio-menu').length > 0) {
+            isHovered = $(".radio-menu").is(":hover");
+            if (isHovered == false) {
+                setTimeout(function() { $(".radio-menu").remove(); }, 300);
                 $('.menu').removeClass('menu-open');
             }
         }
