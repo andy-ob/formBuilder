@@ -71,6 +71,7 @@ $(function() {
         radio_menu = '<div class="radio-menu"> <div> <label for="group-name">Group name</label> <input type="text" id="group-name"/> </div><div> <label for="label-text">Label text</label> <input type="text" id="label-text"/> </div><div> <label for="radio-options">Options</label> <textarea rows="10" id="radio-options"></textarea> </div><div class="required-checkbox"> <label for="required">Required</label> <input type="checkbox" id="required"/> </div><div> <label for="error-text">Error text</label> <input type="text" id="error-text" disabled/> </div><div> <input type="submit" id="done" value="Done"/> </div></div>',
         checkbox_menu = '<div class="checkbox-menu"> <div> <label for="group-name">Group name</label> <input type="text" id="group-name"/> </div><div> <label for="label-text">Label text</label> <input type="text" id="label-text"/> </div><div> <label for="checkbox-options">Options</label> <textarea rows="10" id="checkbox-options"></textarea> </div><div class="required-checkbox"> <label for="required">Required</label> <input type="checkbox" id="required"/> </div><div> <label for="error-text">Error text</label> <input type="text" id="error-text" disabled/> </div><div> <input type="submit" id="done" value="Done"/> </div></div>',
         freeTxt_menu = '<div class="freeTxt-menu"> <div> <label for="free-text">Text</label> <input type="text" id="free-text"/> </div><div> <div class="radio-group inline"> <label for="alignment">Alignment</label> <label class="radio" for="align-left"> <input type="radio" name="alignment" id="align-left" value="align-left">Left </label> <label class="radio" for="align-center"> <input type="radio" name="alignment" id="align-center" value="align-center">Centre </label> <label class="radio" for="align-right"> <input type="radio" name="alignment" id="align-right" value="align-right">Right </label> </div></div><div> <input type="submit" id="done" value="Done"/> </div></div>',
+        file_menu = '<div class="file-menu"> <div> <label for="label-text">Label text</label> <input type="text" id="label-text"/> </div><div class="required-checkbox"> <label for="required">Required</label> <input type="checkbox" id="required"/> </div><div> <label for="error-text">Error text</label> <input type="text" id="error-text" disabled/> </div><div> <input type="submit" id="done" value="Done"/> </div></div>',
         inputThis,
         overlayWidth;
 
@@ -80,7 +81,7 @@ $(function() {
         $('.menu').css('width', overlayWidth);
     }).resize();
 
-    $(document).on('click', '.grid input.text, .grid input.number, .grid input.email, .grid textarea, .grid select, .grid .radio-group, .grid .checkbox-group, .grid .free-text', function(e) {
+    $(document).on('click', '.grid input.text, .grid input.number, .grid input.email, .grid input.file, .grid textarea, .grid select, .grid .radio-group, .grid .checkbox-group, .grid .free-text', function(e) {
         inputThis = $(this);
 
         if ($('.menu').hasClass('menu-open')) {
@@ -133,6 +134,15 @@ $(function() {
             }
 
             populateMenu($('.freeTxt-menu'), freeTxt_menu);
+        }
+
+        if (inputThis.is('input.file')) {
+            e.preventDefault();
+            if ($('.file-menu').length < 1) {
+                $('.menu').append(file_menu);
+            }
+
+            populateMenu($('.file-menu'), file_menu);
         }
 
         e.stopPropagation();
@@ -220,6 +230,10 @@ $(function() {
         }
 
         if (inputThis.is('.free-text')) {
+            menuClass.find('#free-text').val(inputThis[0].innerHTML);
+        }
+
+        if (inputThis.is('input.file')) {
             menuClass.find('#free-text').val(inputThis[0].innerHTML);
         }
         //////////////////////////////////////////
@@ -375,6 +389,13 @@ $(function() {
             isHovered = $(".freeTxt-menu").is(":hover");
             if (isHovered == false) {
                 setTimeout(function() { $(".freeTxt-menu").remove(); }, 300);
+                $('.menu').removeClass('menu-open');
+            }
+        }
+        if ($('.file-menu').length > 0) {
+            isHovered = $(".file-menu").is(":hover");
+            if (isHovered == false) {
+                setTimeout(function() { $(".file-menu").remove(); }, 300);
                 $('.menu').removeClass('menu-open');
             }
         }

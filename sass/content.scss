@@ -40,6 +40,11 @@ body {
 .align-center { text-align: center; }
 .align-right { text-align: right; }
 
+.draggables {
+    position: fixed;
+    right: 0;
+}
+
 ///////////////////
 ////// Grid //////
 /////////////////

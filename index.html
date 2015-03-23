@@ -14,7 +14,7 @@
                 <p>Add row</p>
 
                 <div class="grid js-drop-layout">
-                    <div class="row js-drag-layout">
+                    <!-- <div class="row js-drag-layout">
                         <div class="col twelve-col">
                             <div class="even-pad js-drop-field">
                                 <div class="js-drag-field"><h1 class="free-text">Heading 1</h1></div>
@@ -80,14 +80,15 @@
                                         </label>
                                     </div>
                                 </div>
+                                <div class="js-drag-field"><div class="temp-overlay"></div><label>Upload a file</label><input type="file" class="file"></div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
 
-        <div class="col four-col js-overlay-width">
+        <div class="col four-col js-overlay-width draggables">
             <div class="even-pad">
                 <h3>Draggables</h2>
                 
@@ -203,6 +204,9 @@
 
                             <h6>Buttons <span>+</span></h6>
                             <div class="sub-accord">
+                                <li>
+                                    <div class="js-drag-field"><div class="temp-overlay"></div><label>Upload a file</label><input type="file" class="file"></div>
+                                </li>
                                 <li>
                                     <div class="js-drag-field"><div class="temp-overlay"></div><input type="submit" value="Submit button"></div>
                                 </li>
