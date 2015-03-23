@@ -1,8 +1,24 @@
 $(function() {
 
-    $('.accordion h6').on('click', function() {
-        $(this).next('div').stop(true, true).slideToggle(true);
-        $('.accordion h6').not(this).next('div').hide();
+    $('.accordion > h6').on('click', function() {
+        if ($(this).hasClass('open')) {
+            $(this).find('span').html('+');
+        } else {
+            $(this).find('span').html('-');
+        }
+        $(this).toggleClass('open').next('div').stop(true, true).slideToggle(true);        
+        $('.accordion h6').not(this).removeClass('open').next('div').slideUp();
+        $('.accordion h6').not(this).find('span').html('+');
+    });
+    $('.accordion div h6').on('click', function(){
+        if ($(this).hasClass('open')) {
+            $(this).find('span').html('+');
+        } else {
+            $(this).find('span').html('-');
+        }
+        $(this).toggleClass('open').next('div').stop(true, true).slideToggle(true);
+        $('.accordion div h6').not(this).removeClass('open').next('div').slideUp();
+        $('.accordion div h6').not(this).find('span').html('+');
     });
 
     $('.js-drag-layout, .js-drag-field').draggable({
@@ -53,6 +69,8 @@ $(function() {
         textarea_menu = '<div class="textarea-menu"><div><label for="input-id">Textarea id</label><input type="text" id="input-id" /></div><div><label for="label-text">Label text</label><input type="text" id="label-text" /></div><div><label for="placeholder-text">Placeholder text</label><input type="text" id="placeholder-text" /></div><div class="required-checkbox"><label for="required">Required</label><input type="checkbox" id="required" /></div><div><label for="error-text">Error text</label><input type="text" id="error-text" disabled /></div><div><input type="submit" id="done" value="Done" /></div></div>',
         select_menu = '<div class="select-menu"><div><label for="select-id">Select id</label><input type="text" id="input-id" /></div><div><label for="label-text">Label text</label><input type="text" id="label-text" /></div><div><label for="options">Options</label><textarea rows="10" id="select-options"></textarea></div><div class="placeholder-checkbox"><label for="placeholder">Placeholder (this will set the first option as an unselectable placeholder)</label><input type="checkbox" id="placeholder" /></div><div class="required-checkbox"><label for="required">Required</label><input type="checkbox" id="required" /></div><div><label for="error-text">Error text</label><input type="text" id="error-text" disabled /></div><div><input type="submit" id="done" value="Done" /></div></div>',
         radio_menu = '<div class="radio-menu"> <div> <label for="group-name">Group name</label> <input type="text" id="group-name"/> </div><div> <label for="label-text">Label text</label> <input type="text" id="label-text"/> </div><div> <label for="radio-options">Options</label> <textarea rows="10" id="radio-options"></textarea> </div><div class="required-checkbox"> <label for="required">Required</label> <input type="checkbox" id="required"/> </div><div> <label for="error-text">Error text</label> <input type="text" id="error-text" disabled/> </div><div> <input type="submit" id="done" value="Done"/> </div></div>',
+        checkbox_menu = '<div class="checkbox-menu"> <div> <label for="group-name">Group name</label> <input type="text" id="group-name"/> </div><div> <label for="label-text">Label text</label> <input type="text" id="label-text"/> </div><div> <label for="checkbox-options">Options</label> <textarea rows="10" id="checkbox-options"></textarea> </div><div class="required-checkbox"> <label for="required">Required</label> <input type="checkbox" id="required"/> </div><div> <label for="error-text">Error text</label> <input type="text" id="error-text" disabled/> </div><div> <input type="submit" id="done" value="Done"/> </div></div>',
+        freeTxt_menu = '<div class="freeTxt-menu"> <div> <label for="free-text">Text</label> <input type="text" id="free-text"/> </div><div> <div class="radio-group inline"> <label for="alignment">Alignment</label> <label class="radio" for="align-left"> <input type="radio" name="alignment" id="align-left" value="align-left">Left </label> <label class="radio" for="align-center"> <input type="radio" name="alignment" id="align-center" value="align-center">Centre </label> <label class="radio" for="align-right"> <input type="radio" name="alignment" id="align-right" value="align-right">Right </label> </div></div><div> <input type="submit" id="done" value="Done"/> </div></div>',
         inputThis,
         overlayWidth;
 
@@ -62,14 +80,14 @@ $(function() {
         $('.menu').css('width', overlayWidth);
     }).resize();
 
-    $(document).on('click', '.grid input[type=text], .grid textarea, .grid select, .grid .radio-group', function(e) {
+    $(document).on('click', '.grid input.text, .grid input.number, .grid input.email, .grid textarea, .grid select, .grid .radio-group, .grid .checkbox-group, .grid .free-text', function(e) {
         inputThis = $(this);
 
         if ($('.menu').hasClass('menu-open')) {
             $('.menu').empty();
         }
 
-        if (inputThis.is('input[type=text]')) {
+        if (inputThis.is('input.text, input.number, input.email')) {
             if ($('.input-menu').length < 1) {
                 $('.menu').append(input_menu);
             }
@@ -98,7 +116,23 @@ $(function() {
                 $('.menu').append(radio_menu);
             }
 
-            populateMenu($('.radio-menu'), input_menu);
+            populateMenu($('.radio-menu'), radio_menu);
+        }
+
+        if (inputThis.is('.checkbox-group')) {
+            if ($('.checkbox-menu').length < 1) {
+                $('.menu').append(checkbox_menu);
+            }
+
+            populateMenu($('.checkbox-menu'), checkbox_menu);
+        }
+
+        if (inputThis.is('.free-text')) {
+            if ($('.freeTxt-menu').length < 1) {
+                $('.menu').append(freeTxt_menu);
+            }
+
+            populateMenu($('.freeTxt-menu'), freeTxt_menu);
         }
 
         e.stopPropagation();
@@ -162,11 +196,31 @@ $(function() {
                 options.push(this);
             });
             $.each(options, function(i, value){
-                $('.radio-menu #radio-options').append(options[i].innerText);
+                $('.radio-menu #radio-options').append($.trim(options[i].innerText));
                 if (i < options.length - 1) {
                     $('.radio-menu #radio-options').append('\n');
                 }
             });
+        }
+
+        if (inputThis.is('.checkbox-group')) {
+            $('#label-text').val(inputThis.find('.checkbox-group-label').text());
+
+            var options = [];
+            $('.checkbox-menu #checkbox-options').empty();
+            inputThis.find('label.checkbox').each(function(i){
+                options.push(this);
+            });
+            $.each(options, function(i, value){
+                $('.checkbox-menu #checkbox-options').append($.trim(options[i].innerText));
+                if (i < options.length - 1) {
+                    $('.checkbox-menu #checkbox-options').append('\n');
+                }
+            });
+        }
+
+        if (inputThis.is('.free-text')) {
+            menuClass.find('#free-text').val(inputThis[0].innerHTML);
         }
         //////////////////////////////////////////
     }
@@ -179,7 +233,7 @@ $(function() {
     });
     ////// Set selected input fields type //////
     $(document).on('change', '#input-type', function() {
-        inputThis.attr('type', $(this).val());
+        inputThis.attr({'type' : $(this).val(), 'class' : $(this).val()});
     });
     ////// Set selected input label //////
     $(document).on('keyup', '#label-text', function() {
@@ -219,6 +273,10 @@ $(function() {
     $(document).on('keyup', '#label-text', function() {
         inputThis.find('.radio-group-label').text($(this).val());
     });
+    ////// Set label for checkboxes group //////
+    $(document).on('keyup', '#label-text', function() {
+        inputThis.find('.checkbox-group-label').text($(this).val());
+    });
 
     ////// Text area for select options //////
     var options = [];
@@ -241,6 +299,28 @@ $(function() {
         for (var i = 0; i < items.length; i++) {
             inputThis.append($('<label class="radio" for="radio-' + (i+1) + '"><input type="radio" id="radio-' + (i+1) + '" name="radios" value="' + items[i] + '" />' + items[i] + '</label>'));
         }
+    });
+
+    ////// Text area for checkboxes //////
+    $(document).on('keyup', '#checkbox-options', function() {
+        var items = $(this).val().split('\n');
+
+        inputThis.find('.checkbox').remove();
+
+        for (var i = 0; i < items.length; i++) {
+            inputThis.append($('<label class="checkbox" for="checkbox-' + (i+1) + '"><input type="checkbox" id="checkbox-' + (i+1) + '" name="checkbox" value="' + items[i] + '" />' + items[i] + '</label>'));
+        }
+    });
+
+    ////// Input for free text elems //////
+    $(document).on('keyup', '#free-text', function(){
+        var freeTxt = $(this).val();
+        inputThis[0].innerHTML = freeTxt;
+    });
+    ////// Alignment options for free text //////
+    $(document).on('change', 'input[name="alignment"]:radio', function(){
+        inputThis[0].classList.remove('align-left', 'align-center', 'align-right');
+        inputThis[0].classList.add(this.value);
     });
 
     ////// Done button //////
@@ -281,6 +361,20 @@ $(function() {
             isHovered = $(".radio-menu").is(":hover");
             if (isHovered == false) {
                 setTimeout(function() { $(".radio-menu").remove(); }, 300);
+                $('.menu').removeClass('menu-open');
+            }
+        }
+        if ($('.checkbox-menu').length > 0) {
+            isHovered = $(".checkbox-menu").is(":hover");
+            if (isHovered == false) {
+                setTimeout(function() { $(".checkbox-menu").remove(); }, 300);
+                $('.menu').removeClass('menu-open');
+            }
+        }
+        if ($('.freeTxt-menu').length > 0) {
+            isHovered = $(".freeTxt-menu").is(":hover");
+            if (isHovered == false) {
+                setTimeout(function() { $(".freeTxt-menu").remove(); }, 300);
                 $('.menu').removeClass('menu-open');
             }
         }

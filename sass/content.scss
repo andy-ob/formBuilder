@@ -8,15 +8,38 @@ body {
 .accordion {
     > div {
         display: none;
-        padding-bottom: 40px;
+
+        h6 {
+            font-size: 1em;
+            color: #08c;
+            margin-left: 15px;
+        }
     }
     h6 {
+        position: relative;
         cursor: pointer;
+        margin: 0;
+        padding: 20px 0;
+
+        span {
+            position: absolute;
+            right: 0;
+
+        }
+    }
+    .sub-accord {
+        display: none;
+        margin-left: 15px;
     }
 }
 .main-content {
     padding: 40px 0;
 }
+
+.align-left { text-align: left; }
+.align-center { text-align: center; }
+.align-right { text-align: right; }
+
 ///////////////////
 ////// Grid //////
 /////////////////
@@ -149,15 +172,15 @@ label[contenteditable="true"] {
 ///////////////////////////
 ////// Fom elements //////
 /////////////////////////
-.radio-group {
-    
-    .radio {
+.radio-group, .checkbox-group {
+    margin-bottom: 30px;
+    .radio, .checkbox {
         input {
             margin-right: 5px;
         }
     }
     &.inline  {
-        .radio {
+        .radio, .checkbox {
             display: inline;
             margin-right: 15px;
 

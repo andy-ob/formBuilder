@@ -547,30 +547,63 @@ body {
 /* line 9, ../sass/content.scss */
 .accordion > div {
   display: none;
-  padding-bottom: 40px;
 }
-/* line 13, ../sass/content.scss */
+/* line 12, ../sass/content.scss */
+.accordion > div h6 {
+  font-size: 1em;
+  color: #08c;
+  margin-left: 15px;
+}
+/* line 18, ../sass/content.scss */
 .accordion h6 {
+  position: relative;
   cursor: pointer;
+  margin: 0;
+  padding: 20px 0;
+}
+/* line 24, ../sass/content.scss */
+.accordion h6 span {
+  position: absolute;
+  right: 0;
+}
+/* line 30, ../sass/content.scss */
+.accordion .sub-accord {
+  display: none;
+  margin-left: 15px;
 }
 
-/* line 17, ../sass/content.scss */
+/* line 35, ../sass/content.scss */
 .main-content {
   padding: 40px 0;
 }
 
-/* line 23, ../sass/content.scss */
+/* line 39, ../sass/content.scss */
+.align-left {
+  text-align: left;
+}
+
+/* line 40, ../sass/content.scss */
+.align-center {
+  text-align: center;
+}
+
+/* line 41, ../sass/content.scss */
+.align-right {
+  text-align: right;
+}
+
+/* line 46, ../sass/content.scss */
 .grid {
   border: 1px dashed #ccc;
   padding: 20px;
   min-height: 300px;
 }
-/* line 27, ../sass/content.scss */
+/* line 50, ../sass/content.scss */
 .grid .row {
   margin-bottom: 20px;
   position: relative;
 }
-/* line 30, ../sass/content.scss */
+/* line 53, ../sass/content.scss */
 .grid .row .delete-row {
   cursor: pointer;
   position: absolute;
@@ -584,62 +617,62 @@ body {
   text-align: center;
   top: -10px;
 }
-/* line 44, ../sass/content.scss */
+/* line 67, ../sass/content.scss */
 .grid .col {
   border: 1px solid #999;
   padding: 20px;
 }
-/* line 48, ../sass/content.scss */
+/* line 71, ../sass/content.scss */
 .grid .even-pad {
   min-height: 40px;
 }
 
-/* line 52, ../sass/content.scss */
+/* line 75, ../sass/content.scss */
 .fields {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-/* line 56, ../sass/content.scss */
+/* line 79, ../sass/content.scss */
 .fields li {
   margin: 0;
 }
-/* line 58, ../sass/content.scss */
+/* line 81, ../sass/content.scss */
 .fields li * {
   cursor: move;
 }
-/* line 62, ../sass/content.scss */
+/* line 85, ../sass/content.scss */
 .fields input {
   margin: 0;
 }
-/* line 65, ../sass/content.scss */
+/* line 88, ../sass/content.scss */
 .fields div {
   position: relative;
 }
-/* line 67, ../sass/content.scss */
+/* line 90, ../sass/content.scss */
 .fields div .temp-overlay {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-/* line 75, ../sass/content.scss */
+/* line 98, ../sass/content.scss */
 .layout-draggables .row {
   cursor: move;
   margin-bottom: 10px;
 }
-/* line 79, ../sass/content.scss */
+/* line 102, ../sass/content.scss */
 .layout-draggables .col {
   border: 1px dashed #ccc;
   height: 30px;
 }
 
-/* line 84, ../sass/content.scss */
+/* line 107, ../sass/content.scss */
 label[contenteditable="true"] {
   border: 1px solid blue;
 }
 
-/* line 90, ../sass/content.scss */
+/* line 113, ../sass/content.scss */
 .contextMenu {
   list-style: none;
   margin: 0;
@@ -649,11 +682,11 @@ label[contenteditable="true"] {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.4);
   border: 1px solid #999;
 }
-/* line 98, ../sass/content.scss */
+/* line 121, ../sass/content.scss */
 .contextMenu * {
   transition: color .4s, background .4s;
 }
-/* line 101, ../sass/content.scss */
+/* line 124, ../sass/content.scss */
 .contextMenu li {
   min-width: 150px;
   overflow: hidden;
@@ -662,17 +695,17 @@ label[contenteditable="true"] {
   border-bottom: 1px solid #ecf0f1;
   padding: 0;
 }
-/* line 109, ../sass/content.scss */
+/* line 132, ../sass/content.scss */
 .contextMenu a {
   display: block;
   padding: 12px 15px;
 }
-/* line 112, ../sass/content.scss */
+/* line 135, ../sass/content.scss */
 .contextMenu a:hover {
   background: #ecf0f1;
 }
 
-/* line 120, ../sass/content.scss */
+/* line 143, ../sass/content.scss */
 .menu {
   position: fixed;
   top: 0;
@@ -682,11 +715,11 @@ label[contenteditable="true"] {
   transform: translate3d(150%, 0, 0);
   transition: transform .3s ease-in-out;
 }
-/* line 128, ../sass/content.scss */
+/* line 151, ../sass/content.scss */
 .menu.menu-open {
   transform: translate3d(0, 0, 0);
 }
-/* line 132, ../sass/content.scss */
+/* line 155, ../sass/content.scss */
 .menu > div {
   width: 100%;
   height: 100%;
@@ -695,17 +728,21 @@ label[contenteditable="true"] {
   padding: 30px 15px;
 }
 
-/* line 155, ../sass/content.scss */
-.radio-group .radio input {
+/* line 175, ../sass/content.scss */
+.radio-group, .checkbox-group {
+  margin-bottom: 30px;
+}
+/* line 178, ../sass/content.scss */
+.radio-group .radio input, .radio-group .checkbox input, .checkbox-group .radio input, .checkbox-group .checkbox input {
   margin-right: 5px;
 }
-/* line 160, ../sass/content.scss */
-.radio-group.inline .radio {
+/* line 183, ../sass/content.scss */
+.radio-group.inline .radio, .radio-group.inline .checkbox, .checkbox-group.inline .radio, .checkbox-group.inline .checkbox {
   display: inline;
   margin-right: 15px;
 }
-/* line 164, ../sass/content.scss */
-.radio-group.inline .radio:last-of-type {
+/* line 187, ../sass/content.scss */
+.radio-group.inline .radio:last-of-type, .radio-group.inline .checkbox:last-of-type, .checkbox-group.inline .radio:last-of-type, .checkbox-group.inline .checkbox:last-of-type {
   margin-right: 0;
 }
 

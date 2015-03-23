@@ -17,6 +17,7 @@
                     <div class="row js-drag-layout">
                         <div class="col twelve-col">
                             <div class="even-pad js-drop-field">
+                                <div class="js-drag-field"><h1 class="free-text">Heading 1</h1></div>
                                 <div class="js-drag-field">
                                     <div class="temp-overlay"></div>
                                     <label for="input">Text box</label>
@@ -43,6 +44,42 @@
                                         </label>
                                     </div>
                                 </div>
+                                <div class="js-drag-field">
+                                    <div id="" class="radio-group inline">
+                                        <div class="temp-overlay"></div>
+                                        <label for="" class="radio-group-label">Radio button group</label>
+                                        <label class="radio" for="">
+                                            <input type="radio" name="radios" value="Option one" checked="checked">Option one
+                                        </label>
+                                        <label class="radio" for="">
+                                            <input type="radio" name="radios" value="Option two" checked="checked">Option two
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="js-drag-field">
+                                    <div id="" class="checkbox-group">
+                                        <div class="temp-overlay"></div>
+                                        <label for="" class="checkbox-group-label">Checkbox group</label>
+                                        <label class="checkbox" for="">
+                                            <input type="checkbox" name="checkbox" value="Option one">Option one
+                                        </label>
+                                        <label class="checkbox" for="">
+                                            <input type="checkbox" name="checkbox" value="Option two">Option two
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="js-drag-field">
+                                    <div id="" class="checkbox-group inline">
+                                        <div class="temp-overlay"></div>
+                                        <label for="" class="checkbox-group-label">Checkbox group</label>
+                                        <label class="checkbox" for="">
+                                            <input type="checkbox" name="checkbox" value="Option one">Option one
+                                        </label>
+                                        <label class="checkbox" for="">
+                                            <input type="checkbox" name="checkbox" value="Option two">Option two
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -55,7 +92,7 @@
                 <h3>Draggables</h2>
                 
                 <div class="accordion">
-                    <h6>Rows and columns</h6>
+                    <h6>Rows and columns <span>+</span></h6>
                     
                     <div>
                         <div class="layout-draggables">
@@ -77,68 +114,111 @@
                         </div>
                     </div>
                     
-                    <h6>Form elements</h6>
+                    <h6>Form elements <span>+</span></h6>
                     
                     <div>
                         <ul class="fields">
-                            <li>
-                                <div class="js-drag-field"><div class="temp-overlay"></div><label for="input">Text box</label><input type="text"></div>
-                            </li>
-                            <li>
-                                <div class="js-drag-field"><div class="temp-overlay"></div><label for="input">Text area</label><textarea name="" id="" cols="30" rows="5"></textarea></div>
-                            </li>
-                            <li>
-                                <div class="js-drag-field">
-                                    <div class="temp-overlay"></div>
-                                    <label for="input">Dropdown</label>
-                                    <select name="" id="">
-                                        <option value="">Option one</option>
-                                    </select>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="js-drag-field">
-                                    <div id="" class="radio-group">
+                            <h6>Text boxes <span>+</span></h6>
+                            <div class="sub-accord">
+                                <li>
+                                    <div class="js-drag-field"><div class="temp-overlay"></div><label for="input">Text box</label><input type="text" class="text"></div>
+                                </li>
+                                <li>
+                                    <div class="js-drag-field"><div class="temp-overlay"></div><label for="input">Text area</label><textarea name="" id="" cols="30" rows="5"></textarea></div>
+                                </li>
+                            </div>
+
+                            <h6>Dropdowns <span>+</span></h6>
+                            <div class="sub-accord">
+                                <li>
+                                    <div class="js-drag-field">
                                         <div class="temp-overlay"></div>
-                                        <label for="" class="radio-group-label">Radio button group</label>
-                                        <label class="radio" for="">
-                                            <input type="radio" name="radios" value="Option one" checked="checked">Option one
-                                        </label>
-                                        <label class="radio" for="">
-                                            <input type="radio" name="radios" value="Option two" checked="checked">Option two
-                                        </label>
+                                        <label for="input">Dropdown</label>
+                                        <select name="" id="">
+                                            <option value="">Option one</option>
+                                        </select>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="js-drag-field">
-                                    <div id="" class="radio-group inline">
-                                        <div class="temp-overlay"></div>
-                                        <label for="" class="radio-group-label">Radio button group</label>
-                                        <label class="radio" for="">
-                                            <input type="radio" name="radios" value="Option one" checked="checked">Option one
-                                        </label>
-                                        <label class="radio" for="">
-                                            <input type="radio" name="radios" value="Option two" checked="checked">Option two
-                                        </label>
+                                </li>
+                            </div>
+
+                            <h6>Radios & Checkboxes <span>+</span></h6>
+                            <div class="sub-accord">
+                                <li>
+                                    <div class="js-drag-field">
+                                        <div id="" class="radio-group">
+                                            <div class="temp-overlay"></div>
+                                            <label for="" class="radio-group-label">Radio button group</label>
+                                            <label class="radio" for="">
+                                                <input type="radio" name="radios" value="Option one" checked="checked">Option one
+                                            </label>
+                                            <label class="radio" for="">
+                                                <input type="radio" name="radios" value="Option two" checked="checked">Option two
+                                            </label>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="js-drag-field"><div class="temp-overlay"></div><input type="submit" value="Submit button"></div>
-                            </li>
+                                </li>
+                                <li>
+                                    <div class="js-drag-field">
+                                        <div id="" class="radio-group inline">
+                                            <div class="temp-overlay"></div>
+                                            <label for="" class="radio-group-label">Radio button group</label>
+                                            <label class="radio" for="">
+                                                <input type="radio" name="radios" value="Option one" checked="checked">Option one
+                                            </label>
+                                            <label class="radio" for="">
+                                                <input type="radio" name="radios" value="Option two" checked="checked">Option two
+                                            </label>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="js-drag-field">
+                                        <div id="" class="checkbox-group">
+                                            <div class="temp-overlay"></div>
+                                            <label for="" class="checkbox-group-label">Checkbox group</label>
+                                            <label class="checkbox" for="">
+                                                <input type="checkbox" name="checkbox" value="Option one">Option one
+                                            </label>
+                                            <label class="checkbox" for="">
+                                                <input type="checkbox" name="checkbox" value="Option two">Option two
+                                            </label>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="js-drag-field">
+                                        <div id="" class="checkbox-group inline">
+                                            <div class="temp-overlay"></div>
+                                            <label for="" class="checkbox-group-label">Checkbox group</label>
+                                            <label class="checkbox" for="">
+                                                <input type="checkbox" name="checkbox" value="Option one">Option one
+                                            </label>
+                                            <label class="checkbox" for="">
+                                                <input type="checkbox" name="checkbox" value="Option two">Option two
+                                            </label>
+                                        </div>
+                                    </div>
+                                </li>
+                            </div>
+
+                            <h6>Buttons <span>+</span></h6>
+                            <div class="sub-accord">
+                                <li>
+                                    <div class="js-drag-field"><div class="temp-overlay"></div><input type="submit" value="Submit button"></div>
+                                </li>
+                            </div>
                         </ul>
                     </div>
                     
-                    <h6>Text elements</h6>
+                    <h6>Text elements <span>+</span></h6>
                     
                     <div>
                         <ul class="fields">
-                            <li><div class="js-drag-field"><h1 contenteditable class="editable">Heading 1</h1></div></li>
-                            <li><div class="js-drag-field"><h2 contenteditable class="editable">Heading 2</h2></div></li>
-                            <li><div class="js-drag-field"><h3 contenteditable class="editable">Heading 3</h3></div></li>
-                            <li><div class="js-drag-field"><h4 contenteditable class="editable">Heading 4</h4></div></li>
-                            <li><div class="js-drag-field"><p contenteditable class="editable">Paragraph text</p></div></li>
+                            <li><div class="js-drag-field"><h1 class="free-text">Heading 1</h1></div></li>
+                            <li><div class="js-drag-field"><h2 class="free-text">Heading 2</h2></div></li>
+                            <li><div class="js-drag-field"><h3 class="free-text">Heading 3</h3></div></li>
+                            <li><div class="js-drag-field"><h4 class="free-text">Heading 4</h4></div></li>
+                            <li><div class="js-drag-field"><p class="free-text">Paragraph text</p></div></li>
                         </ul>
                     </div>
                 </div>
