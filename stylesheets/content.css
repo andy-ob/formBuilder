@@ -11,72 +11,124 @@ body {
   overflow-x: hidden;
 }
 
-/* line 9, ../sass/content.scss */
+/* line 8, ../sass/content.scss */
+.mt-40 {
+  margin-top: 40px;
+}
+
+/* line 12, ../sass/content.scss */
 .accordion > div {
   display: none;
 }
-/* line 12, ../sass/content.scss */
+/* line 15, ../sass/content.scss */
 .accordion > div h6 {
   font-size: 1em;
   color: #08c;
   margin-left: 15px;
 }
-/* line 18, ../sass/content.scss */
+/* line 21, ../sass/content.scss */
 .accordion h6 {
   position: relative;
   cursor: pointer;
   margin: 0;
   padding: 20px 0;
 }
-/* line 24, ../sass/content.scss */
+/* line 27, ../sass/content.scss */
 .accordion h6 span {
   position: absolute;
   right: 0;
 }
-/* line 30, ../sass/content.scss */
+/* line 33, ../sass/content.scss */
 .accordion .sub-accord {
   display: none;
   margin-left: 15px;
 }
 
-/* line 35, ../sass/content.scss */
+/* line 38, ../sass/content.scss */
 .main-content {
   padding: 40px 0;
 }
 
-/* line 39, ../sass/content.scss */
+/* line 42, ../sass/content.scss */
 .align-left {
   text-align: left;
 }
 
-/* line 40, ../sass/content.scss */
+/* line 43, ../sass/content.scss */
 .align-center {
   text-align: center;
 }
 
-/* line 41, ../sass/content.scss */
+/* line 44, ../sass/content.scss */
 .align-right {
   text-align: right;
 }
 
-/* line 43, ../sass/content.scss */
+/* line 46, ../sass/content.scss */
 .draggables {
   position: fixed;
   right: 0;
 }
 
 /* line 51, ../sass/content.scss */
+.export, .preview {
+  margin-top: 40px;
+}
+
+/* line 55, ../sass/content.scss */
+.page-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+/* line 65, ../sass/content.scss */
+.preview-panel {
+  background: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translate3d(-50%, -50%, 0);
+  -ms-transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  width: 75%;
+  padding: 40px;
+  border: 1px solid;
+  -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+/* line 76, ../sass/content.scss */
+.preview-panel .close {
+  content: 'X';
+  position: absolute;
+  text-align: center;
+  right: -10px;
+  border-radius: 50%;
+  top: -10px;
+  background: #fff;
+  padding: 10px 20px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+/* line 92, ../sass/content.scss */
 .grid {
   border: 1px dashed #ccc;
   padding: 20px;
   min-height: 300px;
 }
-/* line 55, ../sass/content.scss */
+/* line 96, ../sass/content.scss */
 .grid .row {
   margin-bottom: 20px;
   position: relative;
 }
-/* line 58, ../sass/content.scss */
+/* line 99, ../sass/content.scss */
 .grid .row .delete-row {
   cursor: pointer;
   position: absolute;
@@ -90,62 +142,62 @@ body {
   text-align: center;
   top: -10px;
 }
-/* line 72, ../sass/content.scss */
+/* line 113, ../sass/content.scss */
 .grid .col {
   border: 1px solid #999;
   padding: 20px;
 }
-/* line 76, ../sass/content.scss */
+/* line 117, ../sass/content.scss */
 .grid .even-pad {
   min-height: 40px;
 }
 
-/* line 80, ../sass/content.scss */
+/* line 121, ../sass/content.scss */
 .fields {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-/* line 84, ../sass/content.scss */
+/* line 125, ../sass/content.scss */
 .fields li {
   margin: 0;
 }
-/* line 86, ../sass/content.scss */
+/* line 127, ../sass/content.scss */
 .fields li * {
   cursor: move;
 }
-/* line 90, ../sass/content.scss */
+/* line 131, ../sass/content.scss */
 .fields input {
   margin: 0;
 }
-/* line 93, ../sass/content.scss */
+/* line 134, ../sass/content.scss */
 .fields div {
   position: relative;
 }
-/* line 95, ../sass/content.scss */
+/* line 136, ../sass/content.scss */
 .fields div .temp-overlay {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-/* line 103, ../sass/content.scss */
+/* line 144, ../sass/content.scss */
 .layout-draggables .row {
   cursor: move;
   margin-bottom: 10px;
 }
-/* line 107, ../sass/content.scss */
+/* line 148, ../sass/content.scss */
 .layout-draggables .col {
   border: 1px dashed #ccc;
   height: 30px;
 }
 
-/* line 112, ../sass/content.scss */
+/* line 153, ../sass/content.scss */
 label[contenteditable="true"] {
   border: 1px solid blue;
 }
 
-/* line 118, ../sass/content.scss */
+/* line 159, ../sass/content.scss */
 .contextMenu {
   list-style: none;
   margin: 0;
@@ -155,11 +207,11 @@ label[contenteditable="true"] {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.4);
   border: 1px solid #999;
 }
-/* line 126, ../sass/content.scss */
+/* line 167, ../sass/content.scss */
 .contextMenu * {
   transition: color .4s, background .4s;
 }
-/* line 129, ../sass/content.scss */
+/* line 170, ../sass/content.scss */
 .contextMenu li {
   min-width: 150px;
   overflow: hidden;
@@ -168,17 +220,17 @@ label[contenteditable="true"] {
   border-bottom: 1px solid #ecf0f1;
   padding: 0;
 }
-/* line 137, ../sass/content.scss */
+/* line 178, ../sass/content.scss */
 .contextMenu a {
   display: block;
   padding: 12px 15px;
 }
-/* line 140, ../sass/content.scss */
+/* line 181, ../sass/content.scss */
 .contextMenu a:hover {
   background: #ecf0f1;
 }
 
-/* line 148, ../sass/content.scss */
+/* line 189, ../sass/content.scss */
 .menu {
   position: fixed;
   top: 0;
@@ -188,11 +240,11 @@ label[contenteditable="true"] {
   transform: translate3d(150%, 0, 0);
   transition: transform .3s ease-in-out;
 }
-/* line 156, ../sass/content.scss */
+/* line 197, ../sass/content.scss */
 .menu.menu-open {
   transform: translate3d(0, 0, 0);
 }
-/* line 160, ../sass/content.scss */
+/* line 201, ../sass/content.scss */
 .menu > div {
   width: 100%;
   height: 100%;
@@ -201,20 +253,25 @@ label[contenteditable="true"] {
   padding: 30px 15px;
 }
 
-/* line 180, ../sass/content.scss */
+/* line 221, ../sass/content.scss */
 .radio-group, .checkbox-group {
   margin-bottom: 30px;
 }
-/* line 183, ../sass/content.scss */
+/* line 224, ../sass/content.scss */
 .radio-group .radio input, .radio-group .checkbox input, .checkbox-group .radio input, .checkbox-group .checkbox input {
   margin-right: 5px;
 }
-/* line 188, ../sass/content.scss */
+/* line 229, ../sass/content.scss */
 .radio-group.inline .radio, .radio-group.inline .checkbox, .checkbox-group.inline .radio, .checkbox-group.inline .checkbox {
   display: inline;
   margin-right: 15px;
 }
-/* line 192, ../sass/content.scss */
+/* line 233, ../sass/content.scss */
 .radio-group.inline .radio:last-of-type, .radio-group.inline .checkbox:last-of-type, .checkbox-group.inline .radio:last-of-type, .checkbox-group.inline .checkbox:last-of-type {
   margin-right: 0;
+}
+
+/* line 240, ../sass/content.scss */
+select {
+  width: 100%;
 }

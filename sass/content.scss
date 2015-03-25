@@ -5,6 +5,9 @@
 body {
     overflow-x: hidden;
 }
+.mt-40 {
+    margin-top: 40px;
+}
 .accordion {
     > div {
         display: none;
@@ -45,6 +48,44 @@ body {
     right: 0;
 }
 
+.export, .preview {
+    margin-top: 40px;
+}
+
+.page-overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0,0,0,.5);
+      display: none;
+}
+
+.preview-panel {
+    background: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    @include transform(translate3d(-50%, -50%, 0));
+    width: 75%;
+    padding: 40px;
+    border: 1px solid;
+    @include box-shadow(2px 2px 2px rgba(0,0,0,.5));
+
+    .close {
+          content: 'X';
+          position: absolute;
+          text-align: center;
+          right: -10px;
+          border-radius: 50%;
+          top: -10px;
+          background: #fff;
+          padding: 10px 20px;
+          border: 1px solid;
+          cursor: pointer;
+    }
+}
 ///////////////////
 ////// Grid //////
 /////////////////
@@ -194,4 +235,8 @@ label[contenteditable="true"] {
             }
         }
     }
+}
+
+select {
+    width: 100%;
 }

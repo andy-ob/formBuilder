@@ -399,10 +399,52 @@ $(function() {
                 $('.menu').removeClass('menu-open');
             }
         }
+        if ($('.preview-panel').length > 0) {
+            isHovered = $(".preview-panel").is(":hover");
+            if (isHovered == false) {
+                $('.page-overlay')[0].style.display = 'none';
+                $('.preview-panel').remove();
+            }
+        }
     });
 
 
     ////// On save remove all instances of ui-draggable- and ui-droppable- -> Basicaly will need to cleanse all divs of classes they don't need -> Also remove delete div from grid rows //////
+    $('.grid').on('DOMSubtreeModified', function(){
+        var exported = $('.grid').clone();
+        exported.find('*').removeClass('ui-draggable ui-draggable-handle ui-sortable-handle js-drop-field ui-sortable-handle ui-droppable').remove('.delete-row');
+        console.log(exported[0].innerHTML);
+        $('.rendered-html').text(exported[0].innerHTML);
+    });
+    $('.export').on('click', function(){
+        var exported = $('.grid').clone();
+        exported.find('*').removeClass('ui-draggable ui-draggable-handle ui-sortable-handle js-drop-field ui-sortable-handle ui-droppable').remove('.delete-row');
+        //exported.push($('.grid').clone().find('*').removeClass('ui-draggable ui-draggable-handle ui-sortable-handle js-drop-field ui-sortable-handle ui-droppable').remove('.delete-row'));
+
+        console.log(exported[0]);
+        return false;
+    });
+
+    ////// Preview //////
+    $('.preview').on('click', function(e){
+        var overlay = document.querySelectorAll('.page-overlay')[0],
+            previewPan = document.createElement('div'),
+            exported = document.querySelectorAll('.grid')[0].cloneNode(true);
+
+        $(exported).find('*').removeClass('ui-draggable ui-draggable-handle ui-sortable-handle js-drop-field ui-sortable-handle ui-droppable').remove('.delete-row');
+
+        overlay.style.display = 'block';
+        previewPan.className = 'preview-panel';
+        previewPan.innerHTML = '<span class="close">X</span>' + exported.innerHTML;
+        overlay.appendChild(previewPan);
+
+        e.stopPropagation();
+    });
+
+    $(document).on('click', '.preview-panel .close', function(){
+        $('.page-overlay')[0].style.display = 'none';
+        $('.preview-panel').remove();
+    });
 });
 
 
